@@ -41,19 +41,35 @@ USER $user
 # volumes: Creates a volume to share a .sql database dump that will be used to initialize the application database. The MySQL image will automatically import .sql files placed in the /docker-entrypoint-initdb.d directory inside the container.
 # networks: Sets up this service to use a network named travellist.
 # 
-
-db:
-    image: mysql:5.7
-    container_name: kubernets-db
+services:
+  app:
+    build:
+      args:
+        user: sammy
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: travellist
+    container_name: travellist-app
     restart: unless-stopped
-    environment:
-      MYSQL_DATABASE: ${DB_DATABASE}
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-      MYSQL_USER: ${DB_USERNAME}
-      SERVICE_TAGS: dev
-      SERVICE_NAME: mysql
+    working_dir: /var/www/
     volumes:
-      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+      - ./:/var/www
     networks:
       - travellist
+
+  db:
+      image: mysql:5.7
+      container_name: kubernets-db
+      restart: unless-stopped
+      environment:
+        MYSQL_DATABASE: ${DB_DATABASE}
+        MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+        MYSQL_PASSWORD: ${DB_PASSWORD}
+        MYSQL_USER: ${DB_USERNAME}
+        SERVICE_TAGS: dev
+        SERVICE_NAME: mysql
+      volumes:
+        - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+      networks:
+        - travellist
