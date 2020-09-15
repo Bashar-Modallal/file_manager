@@ -138,12 +138,7 @@
       </a>
     </div>
 
-    {{-- @auth --}}
-    {{-- @guest
-    <div id="fab"></div>
-    @else
-      <div id="fabs">sadad</div>
-    @endguest --}}
+
     
     @if(Auth::user()->role_id== 1) 
       <div id="fab"></div>
@@ -224,7 +219,7 @@
       <span class="sr-only">Previous</span>
     </a>
     <a class="carousel-control-next" href="#previewCarousel" role="button" data-slide="next">
-      <div class="carousel-control-background" aria-hidden="true">
+      <div class="carousel-control-background" aria-hidden="false">
         <i class="fas fa-chevron-right"></i>
       </div>
       <span class="sr-only">Next</span>
@@ -235,6 +230,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  
   <script src="{{ asset('vendor/laravel-filemanager/js/cropper.min.js') }}"></script>
   <script src="{{ asset('vendor/laravel-filemanager/js/dropzone.min.js') }}"></script>
   <script>
