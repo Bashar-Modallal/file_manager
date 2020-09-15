@@ -49,19 +49,23 @@ return [
         'file'  => [
             'folder_name'  => 'files',
             'startup_view' => 'grid',
-            'max_size'     => 50000, // size in KB
+            'max_size'     => 500000, // size in KB
             'valid_mime'   => [
                 'image/jpeg',
                 'image/pjpeg',
                 'image/png',
                 'image/gif',
                 'image/svg+xml',
+                'video/mpeg',
+                'video/ogg',
+                'audio/mpeg',
+                'application/pdf',
             ],
         ],
         'image' => [
             'folder_name'  => 'photos',
             'startup_view' => 'list',
-            'max_size'     => 50000, // size in KB
+            'max_size'     => 500000, // size in KB
             'valid_mime'   => [
                 'image/jpeg',
                 'image/pjpeg',
@@ -70,6 +74,10 @@ return [
                 'image/svg+xml',
                 'application/pdf',
                 'text/plain',
+                'video/mpeg',
+                'video/ogg',
+                'audio/mpeg',
+                'application/pdf',
             ],
         ],
     ],
