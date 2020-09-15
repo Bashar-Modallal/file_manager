@@ -60,6 +60,13 @@ return [
                 'video/ogg',
                 'audio/mpeg',
                 'application/pdf',
+                'application/vnd.rar',
+                'application/x-tar',
+                'application/xhtml+xml',
+                'application/vnd.ms-excel',
+                'application/x-7z-compressed',
+                'video/mp4',
+
             ],
         ],
         'image' => [
@@ -78,6 +85,13 @@ return [
                 'video/ogg',
                 'audio/mpeg',
                 'application/pdf',
+                'application/vnd.rar',
+                'application/x-tar',
+                'application/xhtml+xml',
+                'application/vnd.ms-excel',
+                'application/x-7z-compressed',
+                'video/mp4',
+
             ],
         ],
     ],

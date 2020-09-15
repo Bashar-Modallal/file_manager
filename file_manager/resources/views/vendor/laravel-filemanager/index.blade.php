@@ -44,6 +44,7 @@
     <a class="navbar-toggler collapsed border-0 px-1 py-2 m-0" data-toggle="collapse" data-target="#nav-buttons">
       <i class="fas fa-cog fa-fw"></i>
     </a>
+
     <div class="collapse navbar-collapse flex-grow-0" id="nav-buttons">
       <ul class="navbar-nav">
         <li class="nav-item">
@@ -64,9 +65,42 @@
           </a>
           <div class="dropdown-menu dropdown-menu-right border-0"></div>
         </li>
+
       </ul>
     </div>
-  </nav>
+    <div class="collapse navbar-collapse flex-grow-0" id="nav-buttons">
+      @guest
+      <li class="navbar-nav">
+          <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+      </li>
+      @if (Route::has('register'))
+          <li class="nav-item">
+              <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+          </li>
+      @endif
+      @else
+          <li class="navbar-nav dropdown">
+              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                  {{ Auth::user()->name }}
+              </a>
+
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                                  document.getElementById('logout-form').submit();">
+                      {{ __('Logout') }}
+                  </a>
+
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                      @csrf
+                  </form>
+              </div>
+          </li>
+      @endguest 
+    </div>
+
+  
+    </nav>
 
   <nav class="bg-light fixed-bottom border-top d-none" id="actions">
     <a data-action="open" data-multiple="false"><i class="fas fa-folder-open"></i>{{ trans('laravel-filemanager::lfm.btn-open') }}</a>
@@ -104,7 +138,16 @@
       </a>
     </div>
 
+    {{-- @auth --}}
+    {{-- @guest
     <div id="fab"></div>
+    @else
+      <div id="fabs">sadad</div>
+    @endguest --}}
+    
+    @if(Auth::user()->role_id== 1) 
+      <div id="fab"></div>
+    @endif
   </div>
 
   <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

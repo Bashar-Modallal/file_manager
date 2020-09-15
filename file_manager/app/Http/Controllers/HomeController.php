@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('file_manager');
+        return redirect('/filemanager');
+        // return view('vendor.laravel-filemanager.index');
     }
 }
