@@ -33,6 +33,11 @@
       <i class="fas fa-arrow-left fa-fw"></i>
       <span class="d-none d-lg-inline">{{ trans('laravel-filemanager::lfm.nav-back') }}</span>
     </a>
+    <a class="navbar-brand  d-none d-lg-inline" id="to-previous">
+      <img src="{{asset('3.png')}}" alt="">
+    </a>
+
+
     <a class="navbar-brand d-block d-lg-none" id="show_tree">
       <i class="fas fa-bars fa-fw"></i>
     </a>
@@ -245,12 +250,7 @@
       //   label: 'Confirm',
       //   multiple: true
       // },
-      {
-        name: 'rename',
-        icon: 'edit',
-        label: lang['menu-rename'],
-        multiple: false
-      },
+
       {
         name: 'download',
         icon: 'download',
@@ -263,6 +263,13 @@
       //   label: lang['menu-view'],
       //   multiple: true
       // },
+      @if(Auth::user()->role_id== 1) 
+      {
+        name: 'rename',
+        icon: 'edit',
+        label: lang['menu-rename'],
+        multiple: false
+      },
       {
         name: 'move',
         icon: 'paste',
@@ -287,6 +294,7 @@
         label: lang['menu-delete'],
         multiple: true
       },
+      @endif
     ];
 
     var sortings = [
